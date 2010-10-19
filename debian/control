@@ -1,0 +1,107 @@
+Source: jinja2
+Section: python
+Priority: optional
+Maintainer: Piotr Ożarowski <piotr@debian.org>
+Uploaders: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
+Build-Depends: debhelper (>= 5), quilt, python-support (>= 0.6.4),
+ python-all-dev (>= 2.3.5-11), python-all-dbg,
+ python3-all-dev (>= 3.1.2-10), python3-all-dbg,
+ python-setuptools (>= 0.6b3-1~), python3-setuptools
+Build-Depends-Indep: python-sphinx (>= 0.6), python-pygments
+Standards-Version: 3.9.1
+Homepage: http://jinja.pocoo.org/2/
+XS-Python-Version: >= 2.4
+Vcs-Svn: svn://svn.debian.org/python-modules/packages/jinja2/trunk
+Vcs-Browser: http://svn.debian.org/viewsvn/python-modules/packages/jinja2/trunk/
+
+Package: python-jinja2
+Architecture: any
+Depends: ${python:Depends}, ${shlibs:Depends}, ${misc:Depends}, python-markupsafe
+Recommends: python-pkg-resources
+Provides: ${python:Provides}
+Suggests: python-jinja2-doc
+Enhances: python-pybabel
+XB-Python-Version: ${python:Versions}
+Description: small but fast and easy to use stand-alone template engine
+ Jinja2 is a template engine written in pure Python. It provides a Django
+ inspired non-XML syntax but supports inline expressions and an optional
+ sandboxed environment.
+ .
+ The key-features are:
+  * Configurable syntax. If you are generating LaTeX or other formats with
+    Jinja2 you can change the delimiters to something that integrates better
+    into the LaTeX markup.
+  * Fast. While performance is not the primarily target of Jinja2 it’s
+    surprisingly fast. The overhead compared to regular Python code was reduced
+    to the very minimum.
+  * Easy to debug. Jinja2 integrates directly into the Python traceback system
+    which allows you to debug Jinja2 templates with regular Python debugging
+    helpers.
+  * Secure. It’s possible to evaluate untrusted template code if the optional
+    sandbox is enabled. This allows Jinja2 to be used as templating language
+    for applications where users may modify the template design.
+
+Package: python-jinja2-doc
+Section: doc
+Architecture: all
+Priority: extra
+Depends: libjs-jquery, ${misc:Depends}
+Recommends: python-jinja2
+Description: documentation for the Jinja2 Python library
+ Jinja2 is a small but fast and easy to use stand-alone template engine
+ .
+ This package contains the documentation for Jinja2 in HTML and
+ reStructuredText formats.
+
+Package: python-jinja2-dbg
+Architecture: any
+Section: debug
+Priority: extra
+Depends: python-jinja2 (= ${binary:Version}), python-dbg, ${shlibs:Depends}, ${misc:Depends}
+Provides: ${python:Provides}
+XB-Python-Version: ${python:Versions}
+Description: small but fast and easy to use stand-alone template engine
+ Jinja2 is a template engine written in pure Python. It provides a Django
+ inspired non-XML syntax but supports inline expressions and an optional
+ sandboxed environment.
+ .
+ This package contains the extension built for the Python debug interpreter.
+
+Package: python3-jinja2
+Architecture: any
+Depends: ${python3:Depends}, ${shlibs:Depends}, ${misc:Depends}, python3-markupsafe, python3.1
+Recommends: python3-pkg-resources
+Provides: ${python3:Provides}
+Suggests: python3-jinja2-doc
+Description: small but fast and easy to use stand-alone template engine
+ Jinja2 is a template engine written in pure Python. It provides a Django
+ inspired non-XML syntax but supports inline expressions and an optional
+ sandboxed environment.
+ .
+ The key-features are:
+  * Configurable syntax. If you are generating LaTeX or other formats with
+    Jinja2 you can change the delimiters to something that integrates better
+    into the LaTeX markup.
+  * Fast. While performance is not the primarily target of Jinja2 it’s
+    surprisingly fast. The overhead compared to regular Python code was reduced
+    to the very minimum.
+  * Easy to debug. Jinja2 integrates directly into the Python traceback system
+    which allows you to debug Jinja2 templates with regular Python debugging
+    helpers.
+  * Secure. It’s possible to evaluate untrusted template code if the optional
+    sandbox is enabled. This allows Jinja2 to be used as templating language
+    for applications where users may modify the template design.
+
+Package: python3-jinja2-dbg
+Architecture: any
+Section: debug
+Priority: extra
+Depends: python3-jinja2 (= ${binary:Version}), python3-dbg, ${shlibs:Depends}, ${misc:Depends}
+Provides: ${python:Provides}
+XB-Python-Version: ${python:Versions}
+Description: small but fast and easy to use stand-alone template engine
+ Jinja2 is a template engine written in pure Python. It provides a Django
+ inspired non-XML syntax but supports inline expressions and an optional
+ sandboxed environment.
+ .
+ This package contains the extension built for the Python debug interpreter.
