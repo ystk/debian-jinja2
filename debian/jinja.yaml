@@ -1,5 +1,4 @@
 addon: jinja
 description: "allow syntax highlighting for Jinja templates"
 files: 
-  - syntax/htmljinja.vim
   - syntax/jinja.vim

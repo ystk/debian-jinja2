@@ -1,3 +1,46 @@
+jinja2 (2.6-1) unstable; urgency=low
+
+  * New upstream release
+  * add_version_placeholder patch removed (no longer needed)
+  * htmljinja.vim is no longer available, use jinja.vim instead
+  * python3-jinja2 suggests python-jinja2-doc instead of python3-jinja2-doc
+  * Standards-version bumped to 3.9.2 (no other changes needed)
+
+ -- Piotr Ożarowski <piotr@debian.org>  Mon, 25 Jul 2011 10:31:24 +0200
+
+jinja2 (2.5.5-5) unstable; urgency=low
+
+  * Drop hardcoded python3.1 from Depends (closes: #621816)
+  * Do not compress objects.inv file (closes: #608757)
+
+ -- Piotr Ożarowski <piotr@debian.org>  Fri, 15 Apr 2011 22:05:53 +0200
+
+jinja2 (2.5.5-4) unstable; urgency=low
+
+  * Upload to unstable (closes: 621001)
+  * Lower versions of build dependencies (to the ones from 2.5.5-1)
+  * Convert from dh_pysupport to dh_python2
+  * Change source format to 3.0 (quilt), drop quilt build dependency
+
+ -- Piotr Ożarowski <piotr@debian.org>  Tue, 05 Apr 2011 23:21:21 +0200
+
+jinja2 (2.5.5-3) experimental; urgency=low
+
+  * Bump minimum required python-support version to the one in experimental
+    to get Python 2.7 support (closes: 608149) 
+
+ -- Piotr Ożarowski <piotr@debian.org>  Mon, 27 Dec 2010 23:15:04 +0100
+
+jinja2 (2.5.5-2) experimental; urgency=low
+
+  * Rebuild for Python 2.7 and 3.2 extension (minimum required python-all's
+    version temporary bumped to 2.6.6-4, python-setuptools' to 0.6.14-5
+    and python3-all's to 3.1.2-14 to make sure the right version from
+    experimental will be used). Closes: 607450.
+  * Update debian/rules to handle Python >= 3.2 
+
+ -- Piotr Ożarowski <piotr@debian.org>  Tue, 21 Dec 2010 20:58:19 +0100
+
 jinja2 (2.5.5-1) unstable; urgency=low
 
   * New upstream release

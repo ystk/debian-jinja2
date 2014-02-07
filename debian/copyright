@@ -3,7 +3,7 @@ Mon, 14 Jul 2008 23:45:03 +0200.
 
 It was downloaded from http://pypi.python.org/pypi/Jinja2
 
-Copyright (c) 2009-2010 by the Jinja Team, see AUTHORS for more details.
+Copyright (c) 2009-2011 by the Jinja Team, see AUTHORS for more details.
 
 Some rights reserved.
 
@@ -69,8 +69,5 @@ can be found in `/usr/share/common-licenses/GPL'.
 
   ---------------------------------------------------------------
 
-The Debian packaging is © 2008-2010, Piotr Ożarowski <piotr@debian.org> and
+The Debian packaging is © 2008-2011, Piotr Ożarowski <piotr@debian.org> and
 is licensed under the same license as Jinja2.
-
-On Debian systems, the complete text of the BSD License can be found in
-`/usr/share/common-licenses/BSD'

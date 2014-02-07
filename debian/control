@@ -3,14 +3,14 @@ Section: python
 Priority: optional
 Maintainer: Piotr Ożarowski <piotr@debian.org>
 Uploaders: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
-Build-Depends: debhelper (>= 5), quilt, python-support (>= 0.6.4),
- python-all-dev (>= 2.3.5-11), python-all-dbg,
+Build-Depends: debhelper (>= 5),
+ python-all-dev (>= 2.6.6-3), python-all-dbg,
  python3-all-dev (>= 3.1.2-10), python3-all-dbg,
  python-setuptools (>= 0.6b3-1~), python3-setuptools
 Build-Depends-Indep: python-sphinx (>= 0.6), python-pygments
-Standards-Version: 3.9.1
+Standards-Version: 3.9.2
 Homepage: http://jinja.pocoo.org/2/
-XS-Python-Version: >= 2.4
+X-Python-Version: >= 2.4
 Vcs-Svn: svn://svn.debian.org/python-modules/packages/jinja2/trunk
 Vcs-Browser: http://svn.debian.org/viewsvn/python-modules/packages/jinja2/trunk/
 
@@ -21,7 +21,6 @@ Recommends: python-pkg-resources
 Provides: ${python:Provides}
 Suggests: python-jinja2-doc
 Enhances: python-pybabel
-XB-Python-Version: ${python:Versions}
 Description: small but fast and easy to use stand-alone template engine
  Jinja2 is a template engine written in pure Python. It provides a Django
  inspired non-XML syntax but supports inline expressions and an optional
@@ -59,7 +58,6 @@ Section: debug
 Priority: extra
 Depends: python-jinja2 (= ${binary:Version}), python-dbg, ${shlibs:Depends}, ${misc:Depends}
 Provides: ${python:Provides}
-XB-Python-Version: ${python:Versions}
 Description: small but fast and easy to use stand-alone template engine
  Jinja2 is a template engine written in pure Python. It provides a Django
  inspired non-XML syntax but supports inline expressions and an optional
@@ -69,10 +67,10 @@ Description: small but fast and easy to use stand-alone template engine
 
 Package: python3-jinja2
 Architecture: any
-Depends: ${python3:Depends}, ${shlibs:Depends}, ${misc:Depends}, python3-markupsafe, python3.1
+Depends: ${python3:Depends}, ${shlibs:Depends}, ${misc:Depends}, python3-markupsafe
 Recommends: python3-pkg-resources
 Provides: ${python3:Provides}
-Suggests: python3-jinja2-doc
+Suggests: python-jinja2-doc
 Description: small but fast and easy to use stand-alone template engine
  Jinja2 is a template engine written in pure Python. It provides a Django
  inspired non-XML syntax but supports inline expressions and an optional
@@ -98,7 +96,6 @@ Section: debug
 Priority: extra
 Depends: python3-jinja2 (= ${binary:Version}), python3-dbg, ${shlibs:Depends}, ${misc:Depends}
 Provides: ${python:Provides}
-XB-Python-Version: ${python:Versions}
 Description: small but fast and easy to use stand-alone template engine
  Jinja2 is a template engine written in pure Python. It provides a Django
  inspired non-XML syntax but supports inline expressions and an optional
