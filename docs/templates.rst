@@ -44,7 +44,7 @@ the details later in that document::
 This covers the default settings.  The application developer might have
 changed the syntax from ``{% foo %}`` to ``<% foo %>`` or something similar.
 
-There are two kinds of delimiers. ``{% ... %}`` and ``{{ ... }}``.  The first
+There are two kinds of delimiters. ``{% ... %}`` and ``{{ ... }}``.  The first
 one is used to execute statements such as for-loops or assign values, the
 latter prints the result of the expression to the template.
 
@@ -101,7 +101,7 @@ if printed and that you can iterate over it, but every other operation fails.
 Filters
 -------
 
-Variables can by modified by **filters**.  Filters are separated from the
+Variables can be modified by **filters**.  Filters are separated from the
 variable by a pipe symbol (``|``) and may have optional arguments in
 parentheses.  Multiple filters can be chained.  The output of one filter is
 applied to the next.
@@ -165,7 +165,7 @@ that block::
     {% for item in seq -%}
         {{ item }}
     {%- endfor %}
-    
+
 This will yield all elements without whitespace between them.  If `seq` was
 a list of numbers from ``1`` to ``9`` the output would be ``123456789``.
 
@@ -883,8 +883,9 @@ Here two examples::
             {% include "render_box.html" %}
         {% endfor %}
 
-    The included template ``render_box.html`` is not able to access
-    `box` in Jinja 2.0, but in Jinja 2.1.
+    The included template ``render_box.html`` is *not* able to access
+    `box` in Jinja 2.0. As of Jinja 2.1 ``render_box.html`` *is* able
+    to do so.
 
 
 .. _expressions:
@@ -971,7 +972,7 @@ but exists for completeness' sake.  The following operators are supported:
 
 //
     Divide two numbers and return the truncated integer result.
-    ``{{ 20 / 7 }}`` is ``2``.
+    ``{{ 20 // 7 }}`` is ``2``.
 
 %
     Calculate the remainder of an integer division.  ``{{ 11 % 7 }}`` is ``4``.
@@ -1173,7 +1174,7 @@ The following functions are available in the global scope by default:
     .. attribute:: current
 
         Returns the current item.
-    
+
     **new in Jinja 2.1**
 
 .. class:: joiner(sep=', ')
