@@ -3,22 +3,21 @@ Section: python
 Priority: optional
 Maintainer: Piotr Ożarowski <piotr@debian.org>
 Uploaders: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
-Build-Depends: debhelper (>= 5),
- python-all-dev (>= 2.6.6-3), python-all-dbg,
- python3-all-dev (>= 3.1.2-10), python3-all-dbg,
- python-setuptools (>= 0.6b3-1~), python3-setuptools
-Build-Depends-Indep: python-sphinx (>= 0.6), python-pygments
-Standards-Version: 3.9.2
-Homepage: http://jinja.pocoo.org/2/
-X-Python-Version: >= 2.4
-Vcs-Svn: svn://svn.debian.org/python-modules/packages/jinja2/trunk
-Vcs-Browser: http://svn.debian.org/viewsvn/python-modules/packages/jinja2/trunk/
+Build-Depends: debhelper (>= 9),
+ python-all (>= 2.6.6-3), python3-all,
+ python-setuptools (>= 0.6b3-1~), python3-setuptools,
+ python-sphinx (>= 1.0.7+dfsg) | python3-sphinx, python-pygments
+Standards-Version: 3.9.4
+Homepage: http://jinja.pocoo.org/
+X-Python-Version: >= 2.6
+X-Python3-Version: >= 3.2
+Vcs-Svn: svn://anonscm.debian.org/python-modules/packages/jinja2/trunk/
+Vcs-Browser: http://anonscm.debian.org/viewvc/python-modules/packages/jinja2/trunk/
 
 Package: python-jinja2
-Architecture: any
-Depends: ${python:Depends}, ${shlibs:Depends}, ${misc:Depends}, python-markupsafe
+Architecture: all
+Depends: ${python:Depends}, ${misc:Depends}, python-markupsafe
 Recommends: python-pkg-resources
-Provides: ${python:Provides}
 Suggests: python-jinja2-doc
 Enhances: python-pybabel
 Description: small but fast and easy to use stand-alone template engine
@@ -44,7 +43,7 @@ Package: python-jinja2-doc
 Section: doc
 Architecture: all
 Priority: extra
-Depends: libjs-jquery, ${misc:Depends}
+Depends: ${sphinxdoc:Depends}, ${misc:Depends}
 Recommends: python-jinja2
 Description: documentation for the Jinja2 Python library
  Jinja2 is a small but fast and easy to use stand-alone template engine
@@ -52,22 +51,9 @@ Description: documentation for the Jinja2 Python library
  This package contains the documentation for Jinja2 in HTML and
  reStructuredText formats.
 
-Package: python-jinja2-dbg
-Architecture: any
-Section: debug
-Priority: extra
-Depends: python-jinja2 (= ${binary:Version}), python-dbg, ${shlibs:Depends}, ${misc:Depends}
-Provides: ${python:Provides}
-Description: small but fast and easy to use stand-alone template engine
- Jinja2 is a template engine written in pure Python. It provides a Django
- inspired non-XML syntax but supports inline expressions and an optional
- sandboxed environment.
- .
- This package contains the extension built for the Python debug interpreter.
-
 Package: python3-jinja2
-Architecture: any
-Depends: ${python3:Depends}, ${shlibs:Depends}, ${misc:Depends}, python3-markupsafe
+Architecture: all
+Depends: ${python3:Depends}, ${misc:Depends}, python3-markupsafe
 Recommends: python3-pkg-resources
 Provides: ${python3:Provides}
 Suggests: python-jinja2-doc
@@ -89,16 +75,3 @@ Description: small but fast and easy to use stand-alone template engine
   * Secure. It’s possible to evaluate untrusted template code if the optional
     sandbox is enabled. This allows Jinja2 to be used as templating language
     for applications where users may modify the template design.
-
-Package: python3-jinja2-dbg
-Architecture: any
-Section: debug
-Priority: extra
-Depends: python3-jinja2 (= ${binary:Version}), python3-dbg, ${shlibs:Depends}, ${misc:Depends}
-Provides: ${python:Provides}
-Description: small but fast and easy to use stand-alone template engine
- Jinja2 is a template engine written in pure Python. It provides a Django
- inspired non-XML syntax but supports inline expressions and an optional
- sandboxed environment.
- .
- This package contains the extension built for the Python debug interpreter.

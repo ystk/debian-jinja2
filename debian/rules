@@ -17,83 +17,57 @@ clean:
 	find . -name '\.DS_Store' -delete
 	make -C docs clean
 	dh_clean install-stamp build-stamp \
-		$(PYVERS:%=install-python%) $(PYVERS:%=build-python%) \
-		$(PYVERS:%=install-debug-python%) $(PYVERS:%=build-debug-python%)
+		$(PYVERS:%=install-python%) $(PYVERS:%=build-python%)
 
-build: build-stamp
+build: build-indep
 
-build-stamp: $(PYVERS:%=build-python%) $(PYVERS:%=build-debug-python%)
+build-arch:
+
+build-indep: $(PYVERS:%=build-python%) build-docs
+	touch $@
+
+build-python3%:
+	python3$* setup.py build
+	python debian/u2to3.py --no-diffs --write --nobackups build/lib/
 	touch $@
 
 build-python%:
-	python$* setup.py --with-debugsupport build
-	touch $@
-
-build-debug-python%:
-	python$*-dbg setup.py --with-debugsupport build
+	python$* setup.py build
 	touch $@
 
 build-docs:
-	PYTHONPATH=$(CURDIR) make -C docs html
+	PYTHONPATH=$(CURDIR):$(CURDIR)/docs make -C docs html
 
 install: install-stamp
-install-stamp: $(PYVERS:%=install-python%) $(PYVERS:%=install-debug-python%)
+install-stamp: $(PYVERS:%=install-python%)
 	dh_install
 	touch $@
 
 install-python%: build-python%
-	python$* setup.py --with-debugsupport install $(py_setup_install_args) \
-		--skip-build --single-version-externally-managed --root $(call pkgdir,$*)
-	rm -rf $(call pkgdir,$*)$(call py_libdir,$*)/jinja2/_markupsafe
-	rm -f $(call pkgdir,$*)$(call py_libdir,$*)/jinja2/_debugsupport.c
+	python$* setup.py install $(py_setup_install_args) \
+		--skip-build --root $(call pkgdir,$*)
 	touch $@
 
-install-debug-python%: build-debug-python%
-	python$*-dbg setup.py --with-debugsupport install $(py_setup_install_args) \
-		--skip-build --single-version-externally-managed --root $(call pkgdir,$*)-dbg/
-	find $(call pkgdir,$*)-dbg/usr/ ! -type d ! -name '*\.so' -delete
-	find $(call pkgdir,$*)-dbg/usr/ -depth -empty -delete
-	touch $@
-
-binary-arch: build install
+binary-indep: build-indep install
 	dh_testdir
 	dh_testroot
-	dh_installchangelogs -a CHANGES
-	dh_installdocs -a
-	find $(CURDIR)/debian/ -name '*.py[co]' -delete
-	dh_python2 -a
-	dh_python3 -a 
-	dh_makeshlibs -a
-	dh_strip -ppython-jinja2 --dbg-package=python-jinja2-dbg
-	dh_strip -ppython3-jinja2 --dbg-package=python3-jinja2-dbg
-	rm -rf $(call pkgdir,2.X)-dbg/usr/share/doc/python-jinja2-dbg
-	rm -rf $(call pkgdir,3.X)-dbg/usr/share/doc/python3-jinja2-dbg
-	ln -s python-jinja2 $(call pkgdir,2.X)-dbg/usr/share/doc/python-jinja2-dbg
-	ln -s python3-jinja2 $(call pkgdir,3.X)-dbg/usr/share/doc/python3-jinja2-dbg
-	dh_compress -a -X.py -Xobjects.inv
-	dh_fixperms -a
-	dh_installdeb -a
-	dh_shlibdeps -a
-	dh_gencontrol -a
-	dh_md5sums -a
-	dh_builddeb -a -- -Z bzip2
-
-binary-indep: build-docs
-	dh_testdir -i
-	dh_testroot -i
 	dh_installchangelogs -i CHANGES
-	dh_installdirs -i
 	dh_installdocs -i
+	dh_sphinxdoc -p python-jinja2-doc
 	dh_installexamples -i
+	find $(CURDIR)/debian/ -name '*.py[co]' -delete
+	dh_python2 -i -p python-jinja2
+	dh_python3 -i -p python3-jinja2
 	dh_link -i /usr/share/doc/python-jinja2-doc/html /usr/share/doc/python-jinja2/html
 	dh_link -i /usr/share/doc/python-jinja2-doc/html/_sources /usr/share/doc/python-jinja2/rst
-	dh_link -i /usr/share/javascript/jquery/jquery.min.js /usr/share/doc/python-jinja2-doc/html/_static/jquery.js
-	dh_compress -i -X.html -X.py
+	dh_compress -i -X.html -X.py -Xobjects.inv
 	dh_fixperms -i
 	dh_installdeb -i
 	dh_gencontrol -i
 	dh_md5sums -i
 	dh_builddeb -i -- -Z bzip2
+
+binary-arch:
 
 binary: binary-indep binary-arch
 

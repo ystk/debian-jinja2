@@ -1,3 +1,66 @@
+jinja2 (2.7.3-1) unstable; urgency=medium
+
+  * New upstream release
+  * Drop fix_CVE-2014-0012.patch (better fix applied upstream)
+  * Homepage updated
+
+ -- Piotr Ożarowski <piotr@debian.org>  Tue, 10 Jun 2014 20:44:26 +0200
+
+jinja2 (2.7.2-2) unstable; urgency=high
+
+  * Add fix_CVE-2014-1402 patch which uses tempfile.mkdtemp to create
+    cache dir (closes: 734956)
+
+ -- Piotr Ożarowski <piotr@debian.org>  Sun, 12 Jan 2014 15:09:04 +0100
+
+jinja2 (2.7.2-1) unstable; urgency=high
+
+  * New upstream release
+    - changes default folder for the filesystem cache (closes: 734747,
+      CVE-2014-1402)
+
+ -- Piotr Ożarowski <piotr@debian.org>  Fri, 10 Jan 2014 20:56:20 +0100
+
+jinja2 (2.7.1-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Piotr Ożarowski <piotr@debian.org>  Thu, 08 Aug 2013 22:25:01 +0200
+
+jinja2 (2.7-3) unstable; urgency=low
+
+  [ Jakub Wilk ]
+  * Restore Python 3.2 compatibility (closes: #709638)
+  * Fix bunch of typos in the documentation (closes: #679534)
+
+ -- Piotr Ożarowski <piotr@debian.org>  Sat, 25 May 2013 23:07:10 +0200
+
+jinja2 (2.7-2) unstable; urgency=low
+
+  * Relax build dependency on python3-all and hardcode python3-jinja2's
+    Depends and postinst maintainer script (temporary fix, closes: #709390)
+
+ -- Piotr Ożarowski <piotr@debian.org>  Thu, 23 May 2013 18:42:20 +0200
+
+jinja2 (2.7-1) unstable; urgency=low
+
+  [ Jakub Wilk ]
+  * Use canonical URIs for Vcs-* fields.
+
+  [ Piotr Ożarowski ]
+  * New upstream release
+    - minimum required Python version bumped to 2.6 and 3.3
+  * debugsupport extension no longer available, Architecture changed to "all"
+  * Bump minimum required python3-all version in Build-Depends (to generate
+    versioned py3compile -V in maintainer script)
+  * Add patches/drop_next_import_from_docs-jinjaext.patch to fix building docs
+  * Use dh_sphinxdoc to handle JavaScript libraries used in -doc package
+  * Standards-Version bumped to 3.9.4
+    - add build-arch and build-indep targets
+  * debian/compat changed to 9
+
+ -- Piotr Ożarowski <piotr@debian.org>  Mon, 20 May 2013 21:15:37 +0200
+
 jinja2 (2.6-1) unstable; urgency=low
 
   * New upstream release
