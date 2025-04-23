@@ -1,3 +1,19 @@
+jinja2 (2.7.3-1+deb8u2) jessie-security; urgency=medium
+
+  * Non-maintainer upload by the ELTS team.
+  * Fix CVE-2024-56326.
+    An oversight in how the Jinja sandboxed environment detects calls to
+    str.format allows an attacker that controls the content of a template to
+    execute arbitrary Python code.
+     - d/p/CVE-2024-56326.patch
+  * Fix CVE-2025-27516.
+    An oversight in how the Jinja sandboxed environment interacts with the
+    |attr filter allows an attacker that controls the content of a template
+    to execute arbitrary Python code.
+     - d/p/CVE-2025-27516.patch
+
+ -- Lucas Kanashiro <kanashiro@debian.org>  Mon, 14 Apr 2025 18:07:47 -0300
+
 jinja2 (2.7.3-1+deb8u1) jessie-security; urgency=high
 
   * Non-maintainer upload by the ELTS team.

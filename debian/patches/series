@@ -1,3 +1,5 @@
 drop_next_import_from_docs-jinjaext.patch
 jinja2-typos.patch
 CVE-2024-22195.patch
+CVE-2024-56326.patch
+CVE-2025-27516.patch
